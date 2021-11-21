@@ -25,7 +25,8 @@ async function getStatus(e) {
 
 function displayStatus(data) {
     let heading = "API Key Status";
-    let results = `Your key is valid until ${data.expiry}`;
+    let results = `Your key is valid until\n`
+    results += `${data.expiry}`;
 
     document.getElementById("resultsModalTitle").innerText = heading;
     document.getElementById("results-content").innerText = results;
