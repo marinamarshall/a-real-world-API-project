@@ -5,7 +5,26 @@ const API_URL = "https://ci-jshint.herokuapp.com/api";
 const resultsModal = new bootstrap.Modal(document.getElementById("resultsModal"));
 
 document.getElementById("status").addEventListener("click", e => getStatus(e));
+document.getElementById("submit").addEventListener("click", e => postForm(e));
 
+async function postForm(e) {
+    const form = new FormData(document.getElementById("checksform"));
+
+    // Test functionality
+    // for(let e of form.entries()) {
+    //     console.log(e);
+    // }
+    const response = await fetch(API_URL, {
+                            method: "POST",
+                            headers: {
+                                "Authorization": API_KEY,
+        },
+                            body: form,
+    })
+
+    let result = document.getElementById("checksform").innerText = response.body;
+    
+}
 
 async function getStatus(e) {
     // Make get request to API_URL with the API_KEY
@@ -33,5 +52,3 @@ function displayStatus(data) {
 
     resultsModal.show();
 }
-
-
