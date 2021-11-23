@@ -7,8 +7,24 @@ const resultsModal = new bootstrap.Modal(document.getElementById("resultsModal")
 document.getElementById("status").addEventListener("click", e => getStatus(e));
 document.getElementById("submit").addEventListener("click", e => postForm(e));
 
+function processOptions(form) {
+    // Get form data responses from postForm and convert to json?
+    // Iterate through the options, push each value into a temporary array, convert the array back to a string
+    let optArray = [];
+
+    for (let entry of form.entries()) {
+        if (entry[0] === "options") {
+            
+        }
+    }
+}
+
 async function postForm(e) {
-    const form = new FormData(document.getElementById("checksform"));
+    const form = processOptions(new FormData(document.getElementById("checksform")));
+
+    for (let entry of form.entries()) {
+        console.log(entry);
+    }
 
     // Test functionality
     // for(let e of form.entries()) {
